@@ -74,8 +74,8 @@ nav.top{position:relative;background:var(--nav-bg);backdrop-filter:blur(18px) sa
 @media (max-width:940px){.navlinks{display:none}.burger{display:grid}}
 @media (max-width:560px){.logo .wm .s{display:none}.navright .btn span.lbl{display:none}}
 /* mobile menu */
-.mmenu{position:fixed;inset:0;z-index:150;background:var(--bg);transform:translateY(-100%);transition:transform .45s var(--ease);display:flex;flex-direction:column;padding:96px 26px 40px}
-.mmenu.open{transform:none}
+.mmenu{position:fixed;inset:0;z-index:150;background:var(--bg);transform:translateY(-100%);visibility:hidden;opacity:0;transition:transform .45s var(--ease),opacity .35s,visibility .35s;display:flex;flex-direction:column;padding:96px 26px 40px;overflow-y:auto}
+.mmenu.open{transform:none;visibility:visible;opacity:1}
 .mmenu a{font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;text-decoration:none;color:var(--text);padding:16px 0;border-bottom:1px solid var(--line)}
 .mmenu a:hover{color:var(--indigo-tx)}
 .mclose{position:absolute;top:22px;right:22px;width:40px;height:40px;border:1px solid var(--line);border-radius:3px;background:transparent;color:var(--text);cursor:pointer;font-size:20px}
