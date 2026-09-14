@@ -77,5 +77,5 @@ var REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
   f.addEventListener('submit',function(e){e.preventDefault();if(f.querySelector('#f-web')&&f.querySelector('#f-web').value)return;
     var req=['#f-name','#f-phone','#f-car'].map(function(s){return f.querySelector(s);}).filter(Boolean);
     for(var i=0;i<req.length;i++){var el=req[i];if(!el.value.trim()){el.focus();el.style.borderColor='var(--shu)';return;}el.style.borderColor='';}
-    f.parentElement.innerHTML='<div class="form-done"><div class="ok">✓</div><h3>Request received</h3><p>Thank you. In the live version this goes straight to the shop and they confirm your time by phone. For anything urgent, call (714) 545 5090.</p></div>';});
+    f.parentElement.innerHTML='<div class="form-done"><div class="ok">✓</div><h3>Request received</h3><p>Thank you. In the live version this goes straight to the shop and they confirm your time by phone. For anything urgent, call (714) 772 7185.</p></div>';});
 })();

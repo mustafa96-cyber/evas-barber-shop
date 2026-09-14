@@ -386,3 +386,20 @@ footer{border-top:1px solid var(--line);padding:0 0 120px;background:var(--bg);p
 .obj3dband .o3b-copy p{color:var(--muted);max-width:42ch;margin-bottom:16px}
 .obj3dband .o3b-copy .drag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);border:1px solid var(--line);border-radius:40px;padding:8px 14px}
 @media(max-width:820px){.obj3dband{padding:44px 0}.obj3dband .o3b-art{order:0!important;flex-basis:100%}.obj3dband canvas.obj3d{height:300px}}
+
+/* ---- booking ---- */
+.bookband{padding:78px 0;background:var(--card2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bookband .bookgrid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
+.bookband .bookfacts{margin-top:22px;display:flex;flex-direction:column;gap:9px;color:var(--muted);font-size:14px}
+.bookband .bookfacts b{color:var(--text);font-weight:600}
+.bookform{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:15px;box-shadow:0 34px 70px -48px rgba(15,20,26,.45);position:relative}
+.bookform label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--text)}
+.bookform input,.bookform select{font:inherit;font-weight:400;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--text)}
+.bookform input:focus,.bookform select:focus{outline:2px solid var(--indigo);outline-offset:1px}
+.bookform .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.bookform button{margin-top:4px}
+.bookform .bookmini{font-size:12px;color:var(--faint);margin:0;text-align:center}
+.form-done{text-align:center;padding:26px 10px}
+.form-done .ok{width:54px;height:54px;border-radius:50%;background:var(--indigo);color:var(--btn-tx);display:grid;place-items:center;font-size:27px;margin:0 auto 14px}
+.form-done h3{margin-bottom:8px}.form-done p{color:var(--muted);font-size:14px}
+@media(max-width:820px){.bookband .bookgrid{grid-template-columns:1fr;gap:28px}}

@@ -20,7 +20,7 @@
 <nav class="top" aria-label="Main">
   <div class="wrap navin">
     <a class="logo" href="index.html" aria-label="Eva's Barber Shop, home"><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="var(--indigo)"/><text x="24" y="34" font-size="27" text-anchor="middle" fill="var(--shu)" font-family="Archivo,sans-serif" font-weight="800">E</text></svg><span class="wm"><span class="n">Eva's Barber Shop</span><span class="s">Anaheim · W Lincoln Ave</span></span></a>
-    <div class="navlinks"><a href="services.html">Services</a><a href="about.html">About</a><a href="reviews.html">Reviews</a><a href="faq.html">FAQ</a><a href="visit.html">Visit</a></div>
+    <div class="navlinks"><a href="services.html">Services</a><a href="about.html">About</a><a href="reviews.html">Reviews</a><a href="faq.html">FAQ</a><a href="visit.html">Visit</a><a href="index.html#book">Book</a></div>
     <div class="navright">
       <button class="tgl" id="themeTgl" aria-label="Switch between day and night theme" aria-pressed="false"><svg id="icMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg id="icSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
       <a class="btn btn-fill btn-sm" href="tel:+17147727185"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13 1 .36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.8.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg><span class="lbl">(714) 772 7185</span></a>
@@ -145,7 +145,26 @@
     </div>
   </div>
 </section>
-<section class="ctaband"><div class="wrap"><h2 class="up">Chair's open.</h2><p class="up">Walk in on W Lincoln Ave, or call ahead and we will have one ready.</p><div class="cta up"><a class="btn btn-fill" href="tel:+17147727185">Call (714) 772 7185</a><a class="btn btn-line" href="visit.html">Get directions</a></div></div></section>
+<section id="book" class="bookband">
+  <div class="wrap bookgrid">
+    <div class="bookcopy">
+      <p class="kick up">Book a chair</p>
+      <h2 class="up">Reserve your chair.</h2>
+      <p class="up">Tell us the cut you want and when suits you. In the live site this goes straight to the shop and they confirm by phone. Walk ins are always welcome too. Prefer to talk now? Call (714) 772 7185.</p>
+      <div class="bookfacts up"><span><b>Call or text</b> &nbsp; <a href="tel:+17147727185">(714) 772 7185</a></span><span><b>Hours</b> &nbsp; Confirm with the shop</span><span><b>Visit</b> &nbsp; 604 W Lincoln Ave, Anaheim, CA 92805</span></div>
+    </div>
+    <form id="bookform" class="bookform up" novalidate>
+      <input type="text" id="f-web" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" placeholder="Leave blank">
+      <label>Your name<input id="f-name" type="text" autocomplete="name" required></label>
+      <label>Phone<input id="f-phone" type="tel" autocomplete="tel" required></label>
+      <label>Which barber, or no preference<input id="f-car" type="text" required></label>
+      <label>What you would like<select id="f-svc"><option>Haircut</option><option>Haircut and beard</option><option>Head shave</option><option>Hot towel shave</option><option>Kids or seniors</option><option>Not sure</option></select></label>
+      <button class="btn btn-fill" type="submit">Book a chair</button>
+      <p class="bookmini">No payment now. They confirm your time by phone.</p>
+    </form>
+  </div>
+</section>
+<section class="ctaband"><div class="wrap"><h2 class="up">Chair's open.</h2><p class="up">Walk in on W Lincoln Ave, or call ahead and we will have one ready.</p><div class="cta up"><a class="btn btn-fill" href="tel:+17147727185">Call (714) 772 7185</a><a class="btn btn-line" href="#book">Book a chair</a></div></div></section>
 </main><script type="module" src="assets/hero3d.js"></script><script type="module" src="assets/objects3d.js?v=2"></script><footer>
   <button class="backtop" id="backtop" aria-label="Back to top">↑ Top</button>
   <div class="foot-hero"><div class="wrap"><div class="foot-top">
