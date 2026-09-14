@@ -84,7 +84,7 @@ nav.top{position:relative;background:var(--nav-bg);backdrop-filter:blur(18px) sa
 header.hero{position:relative;min-height:100svh;overflow:hidden}
 .sticky{position:relative;min-height:100svh;overflow:hidden;display:flex;align-items:center;padding:90px 0 44px}
 /* scroll-driven exploded 3D hero */
-header.hero.scroll3d{height:340vh;min-height:0}
+header.hero.scroll3d{height:340vh;min-height:0;overflow:visible}
 header.hero.scroll3d .sticky{position:sticky;top:0;height:100svh;min-height:0;padding:0}
 .callouts{position:absolute;z-index:2;top:50%;left:26px;transform:translateY(-50%);max-width:360px;opacity:0;pointer-events:none;will-change:opacity}
 .callouts h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,3.2vw,40px);letter-spacing:-.02em;line-height:1.02;margin-bottom:18px}
