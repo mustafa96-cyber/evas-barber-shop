@@ -52,10 +52,10 @@ try{
     scissors.scale.setScalar((nw?0.6:0.82)*(1-0.04*p));
     shadow.position.x=scissors.position.x;shadow.material.opacity=(nw?.35:.5)*(1-0.4*p);
     camera.position.z=10.5-0.8*ss(0,1,p);
-    const aOp=1-ss(0.05,0.28,p);
-    if(stageA){stageA.style.opacity=aOp;stageA.style.transform='translateY('+(-24*ss(0.05,0.3,p))+'px)';stageA.style.pointerEvents=aOp<0.15?'none':'auto';}
+    const aOp=1-ss(0.06,0.24,p);
+    if(stageA){stageA.style.opacity=aOp;stageA.style.transform='translateY('+(-20*ss(0.05,0.26,p))+'px)';stageA.style.pointerEvents=aOp<0.15?'none':'auto';}
     if(badge)badge.style.opacity=aOp;
-    if(stageB){stageB.style.opacity=ss(0.34,0.52,p)*(1-ss(0.92,1,p));stageB.style.transform='translateY(calc(-50% + '+(22*(1-ss(0.34,0.52,p)))+'px))';}
+    if(stageB){stageB.style.opacity=ss(0.14,0.32,p)*(1-ss(0.92,1,p));stageB.style.transform='translateY(calc(-50% + '+(22*(1-ss(0.34,0.52,p)))+'px))';}
     if(hprog)hprog.style.width=(p*100).toFixed(1)+'%';
     renderer.render(scene,camera);}
   loop();
