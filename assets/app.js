@@ -20,6 +20,8 @@ var REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
 (function(){ /* staggered reveals */
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;var d=el.getAttribute('data-delay')||0;el.style.transitionDelay=d+'ms';el.classList.add('in');io.unobserve(el);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.up,.rv').forEach(function(el){io.observe(el);});
+  function kick(){document.querySelectorAll('.up,.rv').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight){el.style.transition='none';el.classList.add('in');io.unobserve(el);requestAnimationFrame(function(){el.style.transition='';});}});}
+  kick();addEventListener('load',kick);setTimeout(kick,200);setTimeout(kick,800);
   /* auto-stagger groups: any [data-stagger] children get incremental delay */
   document.querySelectorAll('[data-stagger]').forEach(function(g){Array.prototype.forEach.call(g.children,function(c,i){c.classList.add('rv');c.setAttribute('data-delay',(i*90));io.observe(c);});});
 })();

@@ -16,7 +16,7 @@ const M={
 function box(w,h,d,m,x,y,z){const e=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);e.position.set(x||0,y||0,z||0);return e;}
 function cyl(rt,rb,h,m,seg){return new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,seg||32),m);}
 
-const BUILD={
+export const BUILD={
  wheel(o){const g=new THREE.Group();const steel=M.steel(),dark=M.dark(),rubber=M.rubber(),cal=M.leather(o.accent||0x1f4e8c);cal.metalness=.5;cal.roughness=.3;
    g.add(new THREE.Mesh(new THREE.TorusGeometry(2.15,0.55,26,64),rubber));
    const barrel=cyl(2.02,2.02,0.72,dark,56);barrel.rotation.x=Math.PI/2;g.add(barrel);
@@ -25,6 +25,47 @@ const BUILD={
    const spokeGeo=new THREE.BoxGeometry(0.3,1.55,0.17);for(let i=0;i<5;i++){const a=i/5*Math.PI*2;for(const off of[-0.17,0.17]){const s=new THREE.Mesh(spokeGeo,steel);s.position.set(Math.cos(a)*0.92+Math.cos(a+Math.PI/2)*off,Math.sin(a)*0.92+Math.sin(a+Math.PI/2)*off,0.33);s.rotation.z=a-Math.PI/2;g.add(s);}}
    const disc=cyl(1.58,1.58,0.12,new THREE.MeshStandardMaterial({color:0x3a3f49,metalness:.95,roughness:.3}),48);disc.rotation.x=Math.PI/2;disc.position.z=-0.06;g.add(disc);
    g.rotation.x=-0.2;g.userData.spin='z';return g;},
+ piston(o){const g=new THREE.Group();const steel=M.steel(),dark=M.dark();const rod=M.leather(o.accent||0x1f4e8c);rod.metalness=.6;rod.roughness=.3;
+   const head=cyl(1.15,1.15,1.3,steel,40);head.position.y=1.5;g.add(head);
+   for(let i=0;i<3;i++){const ring=new THREE.Mesh(new THREE.TorusGeometry(1.16,0.06,10,44),dark);ring.rotation.x=Math.PI/2;ring.position.y=1.9-i*0.26;g.add(ring);}
+   const pin=cyl(0.22,0.22,2.5,dark,20);pin.rotation.z=Math.PI/2;pin.position.y=0.95;g.add(pin);
+   const rodShape=new THREE.Mesh(new THREE.BoxGeometry(0.5,2.2,0.32),rod);rodShape.position.y=-0.4;g.add(rodShape);
+   const bigEnd=cyl(0.62,0.62,0.7,rod,28);bigEnd.rotation.x=Math.PI/2;bigEnd.position.y=-1.6;g.add(bigEnd);
+   const bearing=cyl(0.4,0.4,0.76,steel,24);bearing.rotation.x=Math.PI/2;bearing.position.y=-1.6;g.add(bearing);
+   g.userData.spin='sway';g.userData.scale=0.95;return g;},
+ gear(o){const g=new THREE.Group();const steel=new THREE.MeshStandardMaterial({color:0x9aa1ab,metalness:.95,roughness:.32});const acc=M.leather(o.accent||0x1f4e8c);acc.metalness=.5;acc.roughness=.3;
+   const teeth=16,rO=2.0;const body=cyl(rO*0.82,rO*0.82,0.6,steel,teeth*3);body.rotation.x=Math.PI/2;g.add(body);
+   for(let i=0;i<teeth;i++){const a=i/teeth*Math.PI*2;const t=box(0.42,0.5,0.62,steel,Math.cos(a)*rO,Math.sin(a)*rO,0);t.rotation.z=a;g.add(t);}
+   const hub=cyl(0.75,0.75,0.72,acc,32);hub.rotation.x=Math.PI/2;g.add(hub);
+   const bore=cyl(0.34,0.34,0.8,M.dark(),24);bore.rotation.x=Math.PI/2;g.add(bore);
+   for(let i=0;i<5;i++){const a=i/5*Math.PI*2;const hole=cyl(0.26,0.26,0.66,M.dark(),16);hole.rotation.x=Math.PI/2;hole.position.set(Math.cos(a)*1.15,Math.sin(a)*1.15,0);g.add(hole);}
+   g.userData.spin='z';g.userData.scale=1.0;return g;},
+ sparkplug(o){const g=new THREE.Group();const steel=M.steel(),cer=M.enamel();const hex=new THREE.MeshStandardMaterial({color:0x8b9099,metalness:.9,roughness:.34});const acc=M.leather(o.accent||0xc0392b);acc.metalness=.4;
+   const ins=new THREE.Mesh(new THREE.CylinderGeometry(0.55,0.7,2.4,24),cer);ins.position.y=1.6;g.add(ins);
+   const ribs=new THREE.Mesh(new THREE.CylinderGeometry(0.62,0.62,0.9,24),cer);ribs.position.y=2.9;g.add(ribs);
+   const term=cyl(0.22,0.22,0.7,steel,20);term.position.y=3.6;g.add(term);
+   const hexnut=new THREE.Mesh(new THREE.CylinderGeometry(0.62,0.62,0.7,6),hex);hexnut.position.y=0.2;g.add(hexnut);
+   const thread=cyl(0.42,0.42,1.2,steel,20);thread.position.y=-0.7;g.add(thread);
+   for(let i=0;i<6;i++){const r=new THREE.Mesh(new THREE.TorusGeometry(0.42,0.05,8,24),steel);r.rotation.x=Math.PI/2;r.position.y=-0.2-i*0.18;g.add(r);}
+   const el=cyl(0.09,0.09,0.5,steel,10);el.position.y=-1.45;g.add(el);
+   const hook=box(0.12,0.12,0.5,steel,0,-1.6,0.2);g.add(hook);
+   g.userData.spin='sway';g.userData.scale=0.9;return g;},
+ battery(o){const g=new THREE.Group();const body=M.leather(o.accent||0x22303f);body.metalness=.2;body.roughness=.55;const cap=new THREE.MeshStandardMaterial({color:0x1a1d22,metalness:.3,roughness:.6});const red=new THREE.MeshStandardMaterial({color:0xb23b2e,metalness:.4,roughness:.4});const steel=M.steel();
+   g.add(box(3.0,2.2,2.0,body,0,0,0));
+   g.add(box(3.05,0.35,2.05,cap,0,1.2,0));
+   // caps
+   for(const x of[-0.9,-0.3,0.3,0.9]){const c=cyl(0.28,0.28,0.16,cap,16);c.position.set(x,1.45,0);g.add(c);}
+   // terminals
+   const pos=cyl(0.32,0.4,0.5,steel,20);pos.position.set(-1.0,1.6,0.6);g.add(pos);
+   const neg=cyl(0.32,0.4,0.5,steel,20);neg.position.set(1.0,1.6,0.6);g.add(neg);
+   g.add(box(0.7,0.5,0.14,red,-1.0,1.05,0.95));
+   // label plate
+   g.add(box(2.2,1.2,0.03,new THREE.MeshStandardMaterial({color:0xe8ded0,roughness:.7}),0,-0.1,1.02));
+   g.rotation.y=0.4;g.userData.spin='y';g.userData.scale=0.92;return g;},
+ comb(o){const g=new THREE.Group();const mat=M.leather(o.accent||0x1a1a1e);mat.metalness=.3;mat.roughness=.4;
+   g.add(box(4.6,0.7,0.18,mat,0,0,0));
+   for(let i=0;i<26;i++)g.add(box(0.1,1.5,0.16,mat,-2.1+i*0.168,-1.0,0));
+   g.rotation.z=0.15;g.userData.spin='sway';g.userData.scale=0.95;return g;},
  rotor(o){const g=new THREE.Group();const rm=new THREE.MeshStandardMaterial({color:0x596069,metalness:.95,roughness:.32});const cal=M.leather(o.accent||0xc0392b);cal.metalness=.5;cal.roughness=.3;
    const disc=cyl(2,2,0.22,rm,60);disc.rotation.x=Math.PI/2;g.add(disc);
    for(let i=0;i<28;i++){const a=i/28*Math.PI*2;const h=cyl(0.1,0.1,0.3,M.dark(),10);h.rotation.x=Math.PI/2;h.position.set(Math.cos(a)*1.45,Math.sin(a)*1.45,0);g.add(h);}
