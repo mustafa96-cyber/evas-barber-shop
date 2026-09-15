@@ -423,3 +423,9 @@ footer{border-top:1px solid var(--line);padding:0 0 120px;background:var(--bg);p
 .navlinks a[href$="#book"]::after{display:none !important}
 /* ---- footer reveal + CTA polish ---- */
 .foot-hero .foot-cta h2{transition:transform .7s var(--ease),opacity .7s var(--ease)}
+
+/* ---- 3D moments: object only, no marketing copy (beauty) ---- */
+.obj3dband{padding:52px 0}
+.obj3dband .o3b.o3b-solo{flex-direction:column;align-items:center;gap:14px}
+.obj3dband .o3b-solo .o3b-art{flex:0 1 auto;width:100%;max-width:600px}
+.obj3dband .o3b-solo .o3b-hint{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
